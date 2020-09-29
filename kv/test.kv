@@ -1,0 +1,75 @@
+<HomeScreen>:
+	name: 'home_screen'
+	BoxLayout:
+		orientation: "vertical"
+
+		MDToolbar:
+			orientation: "vertical"
+			padding: 45
+			spacing: 40
+			size_hint_y: .25
+			Label:
+				font_size: 40
+				text: root.title
+			Label:
+				font_size: 30
+				text: root.subtitle
+
+
+		BoxLayout:
+			FloatLayout:
+				orientation: 'vertical'
+				MDRaisedButton:
+					pos_hint: {'center_x': .5, 'center_y': .5}
+					size_hint: .3, .2
+					font_size: 30
+					text: "Gráfico de líneas"
+					on_press: root.manager.current = 'lineplot_screen'
+				MDRaisedButton:
+					pos_hint: {'center_x': .5, 'center_y': .8}
+					size_hint: .3, .2
+					font_size: 30
+					text: "Gráfico de barras"
+
+<LineplotScreen>:
+	name: 'lineplot_screen'
+	BoxLayout:
+		orientation: "vertical"
+
+		MDToolbar:
+			orientation: "vertical"
+			padding: 45
+			spacing: 40
+			size_hint_y: .25
+			Label:
+				font_size: 40
+				text: "COVID-AR"
+			Label:
+				font_size: 30
+				text: "Análisis de la COVID-19 en Argentina"
+
+		BoxLayout:
+			FloatLayout:
+				orientation: 'vertical'
+				MDLabel:
+					pos_hint: {"x":.25, "center_y": .85}
+					font_size: 30
+					text: 'Realiza un gráfico de líneas.'
+
+				MDTextField:
+					hint_text: "Nombre del archivo"
+					font_size: 30
+					helper_text: "Ej: prueba.csv"
+					helper_text_mode: "on_focus"
+					size_hint_x: .4
+					pos_hint: {"center_x":.5, "center_y": .7}
+				MDRaisedButton:
+					pos_hint: {'center_x': .5, 'center_y': .5}
+					size_hint: .5, .1
+					font_size: 30
+					text: "Analizar"
+
+
+ScreenManager:
+	HomeScreen
+	LineplotScreen
