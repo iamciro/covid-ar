@@ -6,6 +6,10 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 
 from kivymd.uix.filemanager import MDFileManager
 
+class DisplotScreen(Screen):
+	title = 'COVID-AR'
+	subtitle = 'Análisis de la COVID-19 en Argentina'
+
 class LineplotScreen(Screen):
 	title = 'COVID-AR'
 	subtitle = 'Análisis de la COVID-19 en Argentina'
