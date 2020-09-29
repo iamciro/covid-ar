@@ -1,10 +1,13 @@
+# KIVY
 from kivy.lang import Builder
 from kivy.uix.modalview import ModalView
-
-from kivymd.app import MDApp
 from kivy.uix.screenmanager import ScreenManager, Screen
 
+#KIVYMD
+from kivymd.app import MDApp
 from kivymd.uix.filemanager import MDFileManager
+from kivymd.uix.dialog import MDDialog
+from kivymd.uix.button import MDFlatButton
 
 # Modules
 import os.path as os
@@ -21,6 +24,24 @@ class LineplotScreen(Screen):
 	title = 'COVID-AR'
 	subtitle = 'Análisis de la COVID-19'
 
+	dialog = None
+
+	def show_alert_dialog(self):
+		if not self.dialog:
+			self.dialog = MDDialog(
+				text="El archivo no se encontró",
+				buttons=[
+					MDFlatButton(
+						text="Aceptar",
+						on_press=self.dialog_close
+					)
+				],
+			)
+		self.dialog.open()
+
+	def dialog_close(self, *args):
+		self.dialog.dismiss(force=True)
+		
 	def get_filename(self, filename):
 
 		# Check if filename exists
@@ -40,7 +61,7 @@ class LineplotScreen(Screen):
 			# Show plot
 			plt.show()
 		else:
-			print("El archivo NO se encontró")
+			self.show_alert_dialog()
 
 
 class HomeScreen(Screen):
