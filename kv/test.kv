@@ -52,6 +52,18 @@
 		BoxLayout:
 			FloatLayout:
 				orientation: 'vertical'
+
+	    		BoxLayout:
+	    			orientation: "horizontal"
+	    			pos_hint: {"center_x": .5, "y": .9}
+	    			MDIconButton:
+					    icon: "arrow-left-circle"
+					    size: 50, 50
+					MDLabel:
+						font_size: 18
+						text: 'Volver al inicio'
+						size_hint: .5, .1
+				
 				MDLabel:
 					pos_hint: {"x":.25, "center_y": .85}
 					font_size: 30
@@ -90,6 +102,16 @@
 		BoxLayout:
 			FloatLayout:
 				orientation: 'vertical'
+    			BoxLayout:
+    				orientation: "horizontal"
+    				pos_hint: {"center_x": .5, "y": .9}
+    				MDIconButton:
+				        icon: "arrow-left-circle"
+				        size: 50, 50
+				    MDLabel:
+						font_size: 18
+						text: 'Volver al inicio'
+						size_hint: .5, .1
 				MDLabel:
 					pos_hint: {"x":.25, "center_y": .85}
 					font_size: 30
