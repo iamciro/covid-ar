@@ -1,3 +1,41 @@
+<BackButton@BaseFlatIconButton>
+    canvas.before:
+        Color:
+            rgba:
+                root.theme_cls.primary_color \
+                if not root.text_color else root.text_color
+
+    size_hint_x: None
+    width: dp(150)
+    markup: False
+
+    BoxLayout:
+        spacing: dp(10)
+
+        MDIcon:
+            id: lbl_ic
+            icon: root.icon
+            theme_text_color: 'Custom'
+            text_color:
+                root.theme_cls.primary_color \
+                if not root.text_color else root.text_color
+            size_hint_x: None
+            width: self.texture_size[0]
+
+        MDLabel:
+            id: lbl_txt
+            text: root.text
+            font_size: sp(root.font_size)
+            font_name: root.font_name if root.font_name is not None else self.font_name
+            can_capitalize: root.can_capitalize
+            shorten: True
+            theme_text_color: 'Custom'
+            text_color:
+                root.theme_cls.primary_color \
+                if not root.text_color else root.text_color
+            markup: root.markup
+
+
 <HomeScreen>:
 	name: 'home_screen'
 	BoxLayout:
@@ -53,17 +91,14 @@
 			FloatLayout:
 				orientation: 'vertical'
 
-	    		BoxLayout:
-	    			orientation: "horizontal"
-	    			pos_hint: {"center_x": .5, "y": .9}
-	    			MDIconButton:
-					    icon: "arrow-left-circle"
-					    size: 50, 50
-					MDLabel:
-						font_size: 18
-						text: 'Volver al inicio'
-						size_hint: .5, .1
-				
+				BoxLayout:
+					orientation: "horizontal"
+					pos_hint: {"center_x": .5, "y": .9}
+					BackButton:
+						icon: 'arrow-left-circle'
+						text: "Volver al inicio"
+						on_press: root.manager.current = 'home_screen'
+
 				MDLabel:
 					pos_hint: {"x":.25, "center_y": .85}
 					font_size: 30
@@ -102,16 +137,14 @@
 		BoxLayout:
 			FloatLayout:
 				orientation: 'vertical'
-    			BoxLayout:
-    				orientation: "horizontal"
-    				pos_hint: {"center_x": .5, "y": .9}
-    				MDIconButton:
-				        icon: "arrow-left-circle"
-				        size: 50, 50
-				    MDLabel:
-						font_size: 18
-						text: 'Volver al inicio'
-						size_hint: .5, .1
+				BoxLayout:
+					orientation: "horizontal"
+					pos_hint: {"center_x": .5, "y": .9}
+					BackButton:
+						icon: 'arrow-left-circle'
+						text: "Volver al inicio"
+						on_press: root.manager.current = 'home_screen'
+
 				MDLabel:
 					pos_hint: {"x":.25, "center_y": .85}
 					font_size: 30
