@@ -111,6 +111,7 @@
 					text: 'Realiza un gráfico de líneas.'
 
 				MDTextField:
+					id: filename
 					hint_text: "Nombre del archivo"
 					font_size: 30
 					helper_text: "Ej: prueba.csv"
@@ -122,6 +123,7 @@
 					size_hint: .5, .1
 					font_size: 30
 					text: "Generar gráfico"
+					on_press: root.get_filename(filename.text)
 
 <DisplotScreen>:
 	name: 'displot_screen'
