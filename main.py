@@ -90,10 +90,10 @@ class DisplotScreen(Screen):
 				# Show plot
 				plt.show()
 			else: 
-				self.dialog.open("El archivo que ingresaste no tiene un formato válido")
+				self.dialog.open(txt.DIALOG_FILE_NOT_VALID)
 			
 		else:
-			self.dialog.open('El archivo no se encontró')
+			self.dialog.open(txt.DIALOG_FILE_NOT_FOUND)
 
 
 class LineplotScreen(Screen):
@@ -145,10 +145,10 @@ class LineplotScreen(Screen):
 				# Show plot
 				plt.show()
 			else: 
-				self.dialog.open("El archivo que ingresaste no tiene un formato válido") 
+				self.dialog.open(txt.DIALOG_FILE_NOT_VALID) 
 
 		else:
-			self.dialog.open('El archivo no se encontró')
+			self.dialog.open(txt.DIALOG_FILE_NOT_FOUND)
 
 
 class HomeScreen(Screen):
