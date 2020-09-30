@@ -127,7 +127,7 @@
 					size_hint_x: .4
 					pos_hint: {"center_x":.5, "center_y": .68}
 				MDTextField:
-					id: y
+					id: y_axis
 					hint_text: "Nombre de Y:"
 					font_size: 30
 					helper_text_mode: "on_focus"
@@ -163,7 +163,7 @@
 					size_hint: .5, .1
 					font_size: 30
 					text: "Generar gráfico"
-					on_press: root.get_plot(filename.text,column_to_plot.text,xlabel.text,ylabel.text,plot_title.text)
+					on_press: root.get_plot(filename.text,x_axis.text,y_axis.text,xlabel.text,ylabel.text,plot_title.text)
 
 <DisplotScreen>:
 	name: 'displot_screen'

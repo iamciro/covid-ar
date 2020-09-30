@@ -68,7 +68,7 @@ class DisplotScreen(Screen):
 				# Read file and transform it to a dataframe object
 				csv_file = pd.read_csv(file)
 
-				# Class' column_to_plot attribute
+				# Class attributes
 				self.plot_title = plot_title
 				self.column_to_plot = column_to_plot
 				self.xlabel = xlabel
@@ -96,12 +96,20 @@ class LineplotScreen(Screen):
 
 	title = 'COVID-AR'
 	subtitle = 'Análisis de la COVID-19'
+
+	# Plot info
+	plot_title = ''
+	x_axis = ''
+	y_axis = ''
+	xlabel = ''
+	ylabel = ''
 	
 	def __init__(self, **kwargs): 
 		super(LineplotScreen, self).__init__(**kwargs)
 		self.dialog = Dialog()
 
-	def get_filename(self, file):
+	def get_plot(self, file, x_axis, y_axis, xlabel, ylabel,
+				 plot_title):
 
 		# Check if filename exists
 		if os.isfile(file):
@@ -117,10 +125,18 @@ class LineplotScreen(Screen):
 				# Read file and transform it to a dataframe object
 				csv_file = pd.read_csv(file)
 
-				# Plot dataframe
-				lp = sns.lineplot(data=csv_file, x="month", y="cases_number", sort=False)
+				# Class attributes
+				self.plot_title = plot_title
+				self.x_axis = x_axis
+				self.y_axis = y_axis
+				self.xlabel = xlabel
+				self.ylabel = ylabel
 
-				lp.set(xlabel="Mes", ylabel="Número de casos")
+				# Plot dataframe
+				#lp = sns.lineplot(data=csv_file, x="month", y="cases_number", sort=False)
+				lp = sns.lineplot(data=csv_file, x=self.x_axis, y=self.y_axis, sort=False)
+
+				lp.set(title = self.plot_title, xlabel=self.xlabel, ylabel=self.ylabel)
 
 				# Show plot
 				plt.show()
