@@ -80,6 +80,7 @@ class DisplotScreen(Screen):
 				# We plot data in a displot
 				dp = sns.displot(data)
 
+				# Set plot info
 				dp.set(title=self.plot_title, xlabel=self.xlabel, ylabel=self.ylabel)
 
 				# Show plot
@@ -100,13 +101,13 @@ class LineplotScreen(Screen):
 		super(LineplotScreen, self).__init__(**kwargs)
 		self.dialog = Dialog()
 
-	def get_filename(self, filename):
+	def get_filename(self, file):
 
 		# Check if filename exists
-		if os.isfile(filename):
+		if os.isfile(file):
 
 			# Get filename and extension
-			filename, extension = os.splitext(filename)
+			filename, extension = os.splitext(file)
 
 			# Check if the file is a .csv file
 			if extension == '.csv':
@@ -114,7 +115,7 @@ class LineplotScreen(Screen):
 				sns.set_theme(style="darkgrid")
 
 				# Read file and transform it to a dataframe object
-				csv_file = pd.read_csv(filename)
+				csv_file = pd.read_csv(file)
 
 				# Plot dataframe
 				lp = sns.lineplot(data=csv_file, x="month", y="cases_number", sort=False)
