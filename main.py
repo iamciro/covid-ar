@@ -1,11 +1,9 @@
 # KIVY
 from kivy.lang import Builder
-from kivy.uix.modalview import ModalView
 from kivy.uix.screenmanager import ScreenManager, Screen
 
 #KIVYMD
 from kivymd.app import MDApp
-from kivymd.uix.filemanager import MDFileManager
 from kivymd.uix.label import MDLabel
 from kivymd.uix.dialog import MDDialog
 from kivymd.uix.button import MDFlatButton
