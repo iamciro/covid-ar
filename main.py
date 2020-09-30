@@ -43,6 +43,33 @@ class DisplotScreen(Screen):
 	title = 'COVID-AR'
 	subtitle = 'Análisis de la COVID-19'
 
+	def __init__(self, **kwargs): 
+		super(DisplotScreen, self).__init__(**kwargs)
+		self.dialog = Dialog()
+
+	def get_filename(self, filename):
+
+		# Check if filename exists
+		if os.isfile(filename):
+
+			# Set seaborn theme
+			sns.set_theme(style="darkgrid")
+
+			# Read file and transform it to a dataframe object
+			csv_file = pd.read_csv(filename)
+
+			# Obtenemos la información por edad
+			ages = csv_file['age']
+
+			# Lo graficamos en un gráfico de distribución
+			sns.displot(ages)
+
+			# Show plot
+			plt.show()
+		else:
+			self.dialog.open()
+
+
 class LineplotScreen(Screen):
 
 	title = 'COVID-AR'
