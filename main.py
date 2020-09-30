@@ -44,14 +44,14 @@ class DisplotScreen(Screen):
 		super(DisplotScreen, self).__init__(**kwargs)
 		self.dialog = Dialog()
 
-	def get_plot(self, filename, column_to_plot, xaxis_name, 
+	def get_plot(self, file, column_to_plot, xaxis_name, 
 				 plot_title):
 
 		# Check if filename exists
-		if os.isfile(filename):
+		if os.isfile(file):
 
 			# Get filename and extension
-			filename, extension = os.splitext(filename)
+			filename, extension = os.splitext(file)
 			
 			# Check if the file is a .csv file
 			if extension == '.csv': 
@@ -59,10 +59,10 @@ class DisplotScreen(Screen):
 				sns.set_theme(style="darkgrid")
 
 				# Read file and transform it to a dataframe object
-				csv_file = pd.read_csv(filename)
+				csv_file = pd.read_csv(file)
 
 				# Obtenemos la información por edad
-				ages = csv_file['age']
+				ages = csv_file[column_to_plot]
 
 				# Lo graficamos en un gráfico de distribución
 				sns.displot(ages)
