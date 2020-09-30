@@ -175,9 +175,25 @@
 					helper_text: "Ej: edad"
 					helper_text_mode: "on_focus"
 					size_hint_x: .4
-					pos_hint: {"center_x":.5, "center_y": .55}
+					pos_hint: {"center_x":.5, "center_y": .58}
+				MDTextField:
+					id: xaxis_name
+					hint_text: "Nombre del eje X:"
+					font_size: 30
+					helper_text: "Ej: Edades"
+					helper_text_mode: "on_focus"
+					size_hint_x: .4
+					pos_hint: {"center_x":.5, "center_y": .45}
+				MDTextField:
+					id: plot_title
+					hint_text: "Título del gráfico:"
+					font_size: 30
+					helper_text: "Ej: Evolución de los casos de COVID-19"
+					helper_text_mode: "on_focus"
+					size_hint_x: .4
+					pos_hint: {"center_x":.5, "center_y": .33}
 				MDRaisedButton:
-					pos_hint: {'center_x': .5, 'center_y': .3}
+					pos_hint: {'center_x': .5, 'center_y': .2}
 					size_hint: .5, .1
 					font_size: 30
 					text: "Generar gráfico"
