@@ -14,10 +14,14 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 
+# ASSETS
+from assets import texts as txt
+
 class Dialog:
 
 	dialog = None
 
+	# Open dialog
 	def open(self, message=''):
 		if not self.dialog:
 			self.dialog = MDDialog(
@@ -31,15 +35,15 @@ class Dialog:
 			)
 		self.dialog.open()
 
+	# Close dialog
 	def close(self, *args):
 		self.dialog.dismiss(force=True)
-		#print("Hola")
 
 
 class DisplotScreen(Screen):
 
-	title = 'COVID-AR'
-	subtitle = 'Análisis de la COVID-19'
+	title = txt.APP_TITLE
+	subtitle = txt.APP_SUBTITLE
 
 	# Plot info
 	plot_title = ''
@@ -94,8 +98,8 @@ class DisplotScreen(Screen):
 
 class LineplotScreen(Screen):
 
-	title = 'COVID-AR'
-	subtitle = 'Análisis de la COVID-19'
+	title = txt.APP_TITLE
+	subtitle = txt.APP_SUBTITLE
 
 	# Plot info
 	plot_title = ''
@@ -148,12 +152,12 @@ class LineplotScreen(Screen):
 
 
 class HomeScreen(Screen):
-	title = 'COVID-AR'
-	subtitle = 'Análisis de la COVID-19'
+	title = txt.APP_TITLE
+	subtitle = txt.APP_SUBTITLE
 
 class MainApp(MDApp):
 	def build(self):
-		self.title = "COVID-AR | COVID-19 Cases Analyzer"
+		self.title = txt.APP_NAME
 
 		return Builder.load_file("kv/test.kv")
 

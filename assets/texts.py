@@ -1,0 +1,4 @@
+# APP INFO
+APP_NAME = 'COVID-AR | COVID-19 Cases Analyzer'
+APP_TITLE = 'COVID-AR'
+APP_SUBTITLE = 'Análisis de la COVID-19'
