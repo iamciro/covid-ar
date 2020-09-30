@@ -185,7 +185,7 @@
 					size_hint_x: .4
 					pos_hint: {"center_x":.5, "center_y": .45}
 				MDTextField:
-					id: plot_title
+					id: ylabel
 					hint_text: "Etiqueta del Eje Y:"
 					font_size: 30
 					helper_text: "Ej: Número de casos"
@@ -205,7 +205,7 @@
 					size_hint: .5, .1
 					font_size: 30
 					text: "Generar gráfico"
-					on_press: root.get_plot(filename.text,column_to_plot.text,xlabel.text,ylabel.textplot_title.text)
+					on_press: root.get_plot(filename.text,column_to_plot.text,xlabel.text,ylabel.text,plot_title.text)
 
 ScreenManager:
 	HomeScreen

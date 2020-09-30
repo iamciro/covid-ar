@@ -80,7 +80,7 @@ class DisplotScreen(Screen):
 				# We plot data in a displot
 				dp = sns.displot(data)
 
-				dp.set(xlabel=self.xlabel, ylabel=self.ylabel)
+				dp.set(title=self.plot_title, xlabel=self.xlabel, ylabel=self.ylabel)
 
 				# Show plot
 				plt.show()
