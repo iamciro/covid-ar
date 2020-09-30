@@ -19,12 +19,11 @@ import seaborn as sns
 class Dialog:
 
 	dialog = None
-	message = "No se encontró el archivo."
 
-	def open(self):
+	def open(self, message=''):
 		if not self.dialog:
 			self.dialog = MDDialog(
-				text=self.message,
+				text=message,
 				buttons=[
 					MDFlatButton(
 							text="Aceptar",
@@ -52,22 +51,30 @@ class DisplotScreen(Screen):
 		# Check if filename exists
 		if os.isfile(filename):
 
-			# Set seaborn theme
-			sns.set_theme(style="darkgrid")
+			# Get filename and extension
+			filename, extension = os.splitext(filename)
+			
+			# Check if the file is a .csv file
+			if extension == '.csv': 
+				# Set seaborn theme
+				sns.set_theme(style="darkgrid")
 
-			# Read file and transform it to a dataframe object
-			csv_file = pd.read_csv(filename)
+				# Read file and transform it to a dataframe object
+				csv_file = pd.read_csv(filename)
 
-			# Obtenemos la información por edad
-			ages = csv_file['age']
+				# Obtenemos la información por edad
+				ages = csv_file['age']
 
-			# Lo graficamos en un gráfico de distribución
-			sns.displot(ages)
+				# Lo graficamos en un gráfico de distribución
+				sns.displot(ages)
 
-			# Show plot
-			plt.show()
+				# Show plot
+				plt.show()
+			else: 
+				self.dialog.open("El archivo que ingresaste no tiene un formato válido")
+			
 		else:
-			self.dialog.open()
+			self.dialog.open('El archivo no se encontró')
 
 
 class LineplotScreen(Screen):
@@ -84,21 +91,29 @@ class LineplotScreen(Screen):
 		# Check if filename exists
 		if os.isfile(filename):
 
-			# Set seaborn theme
-			sns.set_theme(style="darkgrid")
+			# Get filename and extension
+			filename, extension = os.splitext(filename)
 
-			# Read file and transform it to a dataframe object
-			csv_file = pd.read_csv(filename)
+			# Check if the file is a .csv file
+			if extension == '.csv':
+				# Set seaborn theme
+				sns.set_theme(style="darkgrid")
 
-			# Plot dataframe
-			lp = sns.lineplot(data=csv_file, x="month", y="cases_number", sort=False)
+				# Read file and transform it to a dataframe object
+				csv_file = pd.read_csv(filename)
 
-			lp.set(xlabel="Mes", ylabel="Número de casos")
+				# Plot dataframe
+				lp = sns.lineplot(data=csv_file, x="month", y="cases_number", sort=False)
 
-			# Show plot
-			plt.show()
+				lp.set(xlabel="Mes", ylabel="Número de casos")
+
+				# Show plot
+				plt.show()
+			else: 
+				self.dialog.open("El archivo que ingresaste no tiene un formato válido") 
+
 		else:
-			self.dialog.open()
+			self.dialog.open('El archivo no se encontró')
 
 
 class HomeScreen(Screen):
