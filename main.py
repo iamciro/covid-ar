@@ -28,7 +28,7 @@ class Dialog:
 				text=message,
 				buttons=[
 					MDFlatButton(
-							text="Aceptar",
+							text=txt.DIALOG_BUTTON_TEXT,
 							on_press=self.close
 					)
 				],
