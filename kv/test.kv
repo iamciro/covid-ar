@@ -106,7 +106,7 @@
 							root.manager.current = 'home_screen'
 
 				MDLabel:
-					pos_hint: {"x":.25, "center_y": .85}
+					pos_hint: {"x":.3, "center_y": .92}
 					font_size: 30
 					text: 'Realiza un gráfico de líneas.'
 
@@ -117,13 +117,53 @@
 					helper_text: "Ej: prueba.csv"
 					helper_text_mode: "on_focus"
 					size_hint_x: .4
-					pos_hint: {"center_x":.5, "center_y": .7}
+					pos_hint: {"center_x":.5, "center_y": .8}
+				MDTextField:
+					id: x_axis
+					hint_text: "Nombre de X:"
+					font_size: 30
+					helper_text: ''
+					helper_text_mode: "on_focus"
+					size_hint_x: .4
+					pos_hint: {"center_x":.5, "center_y": .68}
+				MDTextField:
+					id: y
+					hint_text: "Nombre de Y:"
+					font_size: 30
+					helper_text_mode: "on_focus"
+					helper_text: ''
+					size_hint_x: .4
+					pos_hint: {"center_x":.5, "center_y": .56}
+				MDTextField:
+					id: xlabel
+					hint_text: "Etiqueta del Eje X:"
+					font_size: 30
+					helper_text_mode: "on_focus"
+					helper_text: ''
+					size_hint_x: .4
+					pos_hint: {"center_x":.5, "center_y": .45}
+				MDTextField:
+					id: ylabel
+					hint_text: "Etiqueta del Eje Y:"
+					font_size: 30
+					helper_text_mode: "on_focus"
+					helper_text: ''
+					size_hint_x: .4
+					pos_hint: {"center_x":.5, "center_y": .35}
+				MDTextField:
+					id: plot_title
+					hint_text: "Título del gráfico:"
+					font_size: 30
+					helper_text: "Ej: Evolución de los casos de COVID-19"
+					helper_text_mode: "on_focus"
+					size_hint_x: .4
+					pos_hint: {"center_x":.5, "center_y": .22}
 				MDRaisedButton:
-					pos_hint: {'center_x': .5, 'center_y': .5}
+					pos_hint: {'center_x': .5, 'center_y': .08}
 					size_hint: .5, .1
 					font_size: 30
 					text: "Generar gráfico"
-					on_press: root.get_filename(filename.text)
+					on_press: root.get_plot(filename.text,column_to_plot.text,xlabel.text,ylabel.text,plot_title.text)
 
 <DisplotScreen>:
 	name: 'displot_screen'
