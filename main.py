@@ -61,11 +61,11 @@ class DisplotScreen(Screen):
 				# Read file and transform it to a dataframe object
 				csv_file = pd.read_csv(file)
 
-				# Obtenemos la información por edad
-				ages = csv_file[column_to_plot]
+				# We get data by the column_to_plot arg
+				data = csv_file[column_to_plot]
 
 				# Lo graficamos en un gráfico de distribución
-				sns.displot(ages)
+				sns.displot(data)
 
 				# Show plot
 				plt.show()
