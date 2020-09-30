@@ -44,7 +44,8 @@ class DisplotScreen(Screen):
 		super(DisplotScreen, self).__init__(**kwargs)
 		self.dialog = Dialog()
 
-	def get_filename(self, filename):
+	def get_plot(self, filename, column_to_plot, xaxis_name, 
+				 plot_title):
 
 		# Check if filename exists
 		if os.isfile(filename):
