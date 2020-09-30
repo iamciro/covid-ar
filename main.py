@@ -37,14 +37,21 @@ class Dialog:
 
 
 class DisplotScreen(Screen):
+
 	title = 'COVID-AR'
 	subtitle = 'Análisis de la COVID-19'
+
+	# Plot info
+	plot_title = ''
+	column_to_plot = ''
+	xlabel = ''
+	ylabel = ''
 
 	def __init__(self, **kwargs): 
 		super(DisplotScreen, self).__init__(**kwargs)
 		self.dialog = Dialog()
 
-	def get_plot(self, file, column_to_plot, xaxis_name, 
+	def get_plot(self, file, column_to_plot, xlabel, ylabel,
 				 plot_title):
 
 		# Check if filename exists
@@ -61,11 +68,19 @@ class DisplotScreen(Screen):
 				# Read file and transform it to a dataframe object
 				csv_file = pd.read_csv(file)
 
-				# We get data by the column_to_plot arg
-				data = csv_file[column_to_plot]
+				# Class' column_to_plot attribute
+				self.plot_title = plot_title
+				self.column_to_plot = column_to_plot
+				self.xlabel = xlabel
+				self.ylabel = ylabel
 
-				# Lo graficamos en un gráfico de distribución
-				sns.displot(data)
+				# We get data by the column_to_plot arg
+				data = csv_file[self.column_to_plot]
+
+				# We plot data in a displot
+				dp = sns.displot(data)
+
+				dp.set(xlabel=self.xlabel, ylabel=self.ylabel)
 
 				# Show plot
 				plt.show()

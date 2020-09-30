@@ -177,8 +177,8 @@
 					size_hint_x: .4
 					pos_hint: {"center_x":.5, "center_y": .58}
 				MDTextField:
-					id: xaxis_name
-					hint_text: "Nombre del eje X:"
+					id: xlabel
+					hint_text: "Etiqueta del Eje X:"
 					font_size: 30
 					helper_text: "Ej: Edades"
 					helper_text_mode: "on_focus"
@@ -186,18 +186,26 @@
 					pos_hint: {"center_x":.5, "center_y": .45}
 				MDTextField:
 					id: plot_title
+					hint_text: "Etiqueta del Eje Y:"
+					font_size: 30
+					helper_text: "Ej: Número de casos"
+					helper_text_mode: "on_focus"
+					size_hint_x: .4
+					pos_hint: {"center_x":.5, "center_y": .33}
+				MDTextField:
+					id: plot_title
 					hint_text: "Título del gráfico:"
 					font_size: 30
 					helper_text: "Ej: Evolución de los casos de COVID-19"
 					helper_text_mode: "on_focus"
 					size_hint_x: .4
-					pos_hint: {"center_x":.5, "center_y": .33}
+					pos_hint: {"center_x":.5, "center_y": .22}
 				MDRaisedButton:
-					pos_hint: {'center_x': .5, 'center_y': .2}
+					pos_hint: {'center_x': .5, 'center_y': .1}
 					size_hint: .5, .1
 					font_size: 30
 					text: "Generar gráfico"
-					on_press: root.get_plot(filename.text,column_to_plot.text,xaxis_name.text,plot_title.text)
+					on_press: root.get_plot(filename.text,column_to_plot.text,xlabel.text,ylabel.textplot_title.text)
 
 ScreenManager:
 	HomeScreen
