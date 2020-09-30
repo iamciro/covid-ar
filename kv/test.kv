@@ -168,8 +168,16 @@
 					helper_text_mode: "on_focus"
 					size_hint_x: .4
 					pos_hint: {"center_x":.5, "center_y": .7}
+				MDTextField:
+					id: column_to_plot
+					hint_text: "Nombre de la columna a gráficar:"
+					font_size: 30
+					helper_text: "Ej: edad"
+					helper_text_mode: "on_focus"
+					size_hint_x: .4
+					pos_hint: {"center_x":.5, "center_y": .55}
 				MDRaisedButton:
-					pos_hint: {'center_x': .5, 'center_y': .5}
+					pos_hint: {'center_x': .5, 'center_y': .3}
 					size_hint: .5, .1
 					font_size: 30
 					text: "Generar gráfico"
