@@ -6,6 +6,7 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 #KIVYMD
 from kivymd.app import MDApp
 from kivymd.uix.filemanager import MDFileManager
+from kivymd.uix.label import MDLabel
 from kivymd.uix.dialog import MDDialog
 from kivymd.uix.button import MDFlatButton
 
@@ -15,6 +16,29 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 
+class Dialog:
+
+	dialog = None
+	message = "No se encontró el archivo."
+
+	def open(self):
+		if not self.dialog:
+			self.dialog = MDDialog(
+				text=self.message,
+				buttons=[
+					MDFlatButton(
+							text="Aceptar",
+							on_press=self.close
+					)
+				],
+			)
+		self.dialog.open()
+
+	def close(self, *args):
+		self.dialog.dismiss(force=True)
+		#print("Hola")
+
+
 class DisplotScreen(Screen):
 	title = 'COVID-AR'
 	subtitle = 'Análisis de la COVID-19'
@@ -23,25 +47,11 @@ class LineplotScreen(Screen):
 
 	title = 'COVID-AR'
 	subtitle = 'Análisis de la COVID-19'
+	
+	def __init__(self, **kwargs): 
+		super(LineplotScreen, self).__init__(**kwargs)
+		self.dialog = Dialog()
 
-	dialog = None
-
-	def show_alert_dialog(self):
-		if not self.dialog:
-			self.dialog = MDDialog(
-				text="El archivo no se encontró",
-				buttons=[
-					MDFlatButton(
-						text="Aceptar",
-						on_press=self.dialog_close
-					)
-				],
-			)
-		self.dialog.open()
-
-	def dialog_close(self, *args):
-		self.dialog.dismiss(force=True)
-		
 	def get_filename(self, filename):
 
 		# Check if filename exists
@@ -61,7 +71,7 @@ class LineplotScreen(Screen):
 			# Show plot
 			plt.show()
 		else:
-			self.show_alert_dialog()
+			self.dialog.open()
 
 
 class HomeScreen(Screen):
