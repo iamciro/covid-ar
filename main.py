@@ -23,16 +23,15 @@ class Dialog:
 
 	# Open dialog
 	def open(self, message=''):
-		if not self.dialog:
-			self.dialog = MDDialog(
-				text=message,
-				buttons=[
-					MDFlatButton(
-							text=txt.DIALOG_BUTTON_TEXT,
-							on_press=self.close
-					)
-				],
-			)
+		self.dialog = MDDialog(
+			text=message,
+			buttons=[
+				MDFlatButton(
+						text=txt.DIALOG_BUTTON_TEXT,
+						on_press=self.close
+				)
+			],
+		)
 		self.dialog.open()
 
 	# Close dialog
@@ -55,45 +54,72 @@ class DisplotScreen(Screen):
 		super(DisplotScreen, self).__init__(**kwargs)
 		self.dialog = Dialog()
 
+	# Verify data
+	def verify_textinput_data(self,file, column_to_plot):
+
+		incorrect_data = False
+
+		if len(file) == 0:
+			incorrect_data = True
+		elif len(column_to_plot) == 0:
+			incorrect_data = True
+
+		return incorrect_data
+
 	def get_plot(self, file, column_to_plot, xlabel, ylabel,
 				 plot_title):
 
-		# Check if filename exists
-		if os.isfile(file):
+		# Check data
+		incorrect_data = self.verify_textinput_data(file, column_to_plot)
 
-			# Get filename and extension
-			filename, extension = os.splitext(file)
-			
-			# Check if the file is a .csv file
-			if extension == '.csv': 
-				# Set seaborn theme
-				sns.set_theme(style="darkgrid")
+		try:
+			if incorrect_data == False:
+				# Check if filename exists
+				if os.isfile(file):
 
-				# Read file and transform it to a dataframe object
-				csv_file = pd.read_csv(file)
+					# Get filename and extension
+					filename, extension = os.splitext(file)
+					
+					# Check if the file is a .csv file
+					if extension == '.csv': 
+						# Set seaborn theme
+						sns.set_theme(style="darkgrid")
 
-				# Class attributes
-				self.plot_title = plot_title
-				self.column_to_plot = column_to_plot
-				self.xlabel = xlabel
-				self.ylabel = ylabel
+						# Read file and transform it to a dataframe object
+						csv_file = pd.read_csv(file)
 
-				# We get data by the column_to_plot arg
-				data = csv_file[self.column_to_plot]
+						# Class attributes
+						self.plot_title = plot_title
+						self.column_to_plot = column_to_plot
+						self.xlabel = xlabel
+						self.ylabel = ylabel
 
-				# We plot data in a displot
-				dp = sns.displot(data)
+						# We get data by the column_to_plot arg
+						data = csv_file[self.column_to_plot]
 
-				# Set plot info
-				dp.set(title=self.plot_title, xlabel=self.xlabel, ylabel=self.ylabel)
+						# We plot data in a displot
+						dp = sns.displot(data)
 
-				# Show plot
-				plt.show()
-			else: 
-				self.dialog.open(txt.DIALOG_FILE_NOT_VALID)
-			
-		else:
-			self.dialog.open(txt.DIALOG_FILE_NOT_FOUND)
+						# Set plot info
+						dp.set(title=self.plot_title, xlabel=self.xlabel, ylabel=self.ylabel)
+
+						# Show plot
+						plt.show()
+					else: 
+						#print("Archivo no valido")
+						self.dialog.open(txt.DIALOG_FILE_NOT_VALID)
+					
+				else:
+					#print("Archivo no encontrado")
+					self.dialog.open(txt.DIALOG_FILE_NOT_FOUND)
+			else:
+				#print("Data incorrecta")
+				self.dialog.open(txt.DIALOG_INCORRECT_DATA)
+
+		except KeyError as e:
+			#print("Columna incorrecta")
+			self.dialog.open(txt.DIALOG_KEY_ERROR)
+
 
 
 class LineplotScreen(Screen):
