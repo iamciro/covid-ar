@@ -17,3 +17,24 @@ DIALOG_FILE_NOT_FOUND = 'El archivo no se encontró'
 DIALOG_FILE_NOT_VALID = 'El archivo que ingresaste no tiene un formato válido'
 DIALOG_KEY_ERROR = 'La columna que ingresaste es errónea'
 DIALOG_KEY_ERROR_LINEPLOT = "Los ejes X e Y que ingresaste no son correctos"
+
+### SCREENS TEXTS ###
+
+# BACK TO HOME BUTTON TEXT
+BACK_TO_HOME_BUTTON_TEXT = "Volver al inicio"
+
+# HomeScreen TEXTS
+DISPLOT_SCREEN_BUTTON_TEXT = 'Gráfico de barras'
+LINEPLOT_SCREEN_BUTTON_TEXT = 'Gráfico de líneas'
+
+# LineplotScreen TEXTS
+LINEPLOT_TEXT_1 = 'Realiza un gráfico de líneas'
+FILENAME_TEXTINPUT_TEXT = "Nombre del archivo"
+FILENAME_TEXTINPUT_HELPER_TEXT = "Ej: prueba.csv"
+X_AXIS_TEXT = "Nombre del Eje X"
+Y_AXIS_TEXT = "Nombre del Eje Y"
+X_LABEL_TEXT = "Etiqueta del Eje X"
+Y_LABEL_TEXT = "Etiqueta del Eje Y"
+PLOT_TITLE_TEXT = "Título del gráfico"
+PLOT_TITLE_HELPER_TEXT = "Ej: Evolución de los casos de COVID-19"
+SHOW_PLOT_BUTTON_TEXT = "Generar gráfico"

@@ -1,3 +1,5 @@
+#:import txt assets.texts
+
 <BackButton@BaseFlatIconButton>
     canvas.before:
         Color:
@@ -60,7 +62,7 @@
 					pos_hint: {'center_x': .5, 'center_y': .5}
 					size_hint: .3, .2
 					font_size: 30
-					text: "Gráfico de líneas"
+					text: txt.LINEPLOT_SCREEN_BUTTON_TEXT
 					on_press: 
 						root.manager.transition.direction = 'left' 
 						root.manager.current = 'lineplot_screen'
@@ -68,7 +70,7 @@
 					pos_hint: {'center_x': .5, 'center_y': .8}
 					size_hint: .3, .2
 					font_size: 30
-					text: "Gráfico de barras"
+					text: txt.DISPLOT_SCREEN_BUTTON_TEXT
 					on_press:
 						root.manager.transition.direction = 'left'  
 						root.manager.current = 'displot_screen'
@@ -99,7 +101,7 @@
 					pos_hint: {"center_x": .5, "y": .9}
 					BackButton:
 						icon: 'arrow-left-circle'
-						text: "Volver al inicio"
+						text: txt.BACK_TO_HOME_BUTTON_TEXT
 						on_press:
 							root.manager.transition.direction = 'right' 
 							root.manager.current = 'home_screen'
@@ -107,19 +109,19 @@
 				MDLabel:
 					pos_hint: {"x":.3, "center_y": .92}
 					font_size: 30
-					text: 'Realiza un gráfico de líneas.'
+					text: txt.LINEPLOT_TEXT_1
 
 				MDTextField:
 					id: filename
-					hint_text: "Nombre del archivo"
+					hint_text: txt.FILENAME_TEXTINPUT_TEXT
 					font_size: 30
-					helper_text: "Ej: prueba.csv"
+					helper_text: txt.FILENAME_TEXTINPUT_HELPER_TEXT
 					helper_text_mode: "on_focus"
 					size_hint_x: .4
 					pos_hint: {"center_x":.5, "center_y": .8}
 				MDTextField:
 					id: x_axis
-					hint_text: "Nombre de X:"
+					hint_text: txt.X_AXIS_TEXT
 					font_size: 30
 					helper_text: ''
 					helper_text_mode: "on_focus"
@@ -127,7 +129,7 @@
 					pos_hint: {"center_x":.5, "center_y": .68}
 				MDTextField:
 					id: y_axis
-					hint_text: "Nombre de Y:"
+					hint_text: txt.X_AXIS_TEXT
 					font_size: 30
 					helper_text_mode: "on_focus"
 					helper_text: ''
@@ -135,7 +137,7 @@
 					pos_hint: {"center_x":.5, "center_y": .56}
 				MDTextField:
 					id: xlabel
-					hint_text: "Etiqueta del Eje X:"
+					hint_text: txt.X_LABEL_TEXT
 					font_size: 30
 					helper_text_mode: "on_focus"
 					helper_text: ''
@@ -143,7 +145,7 @@
 					pos_hint: {"center_x":.5, "center_y": .45}
 				MDTextField:
 					id: ylabel
-					hint_text: "Etiqueta del Eje Y:"
+					hint_text: txt.Y_LABEL_TEXT
 					font_size: 30
 					helper_text_mode: "on_focus"
 					helper_text: ''
@@ -151,9 +153,9 @@
 					pos_hint: {"center_x":.5, "center_y": .35}
 				MDTextField:
 					id: plot_title
-					hint_text: "Título del gráfico:"
+					hint_text: txt.PLOT_TITLE_TEXT
 					font_size: 30
-					helper_text: "Ej: Evolución de los casos de COVID-19"
+					helper_text: txt.PLOT_TITLE_HELPER_TEXT
 					helper_text_mode: "on_focus"
 					size_hint_x: .4
 					pos_hint: {"center_x":.5, "center_y": .22}
@@ -161,7 +163,7 @@
 					pos_hint: {'center_x': .5, 'center_y': .08}
 					size_hint: .5, .1
 					font_size: 30
-					text: "Generar gráfico"
+					text: txt.SHOW_PLOT_BUTTON_TEXT
 					on_press: root.get_plot(filename.text,x_axis.text,y_axis.text,xlabel.text,ylabel.text,plot_title.text)
 
 <DisplotScreen>:
