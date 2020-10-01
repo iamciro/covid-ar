@@ -138,43 +138,68 @@ class LineplotScreen(Screen):
 		super(LineplotScreen, self).__init__(**kwargs)
 		self.dialog = Dialog()
 
+	# Verify data
+	def verify_textinput_data(self,file, x_axis, y_axis):
+
+		incorrect_data = False
+
+		if len(file) == 0:
+			incorrect_data = True
+		elif len(x_axis) == 0:
+			incorrect_data = True
+		elif len(y_axis) == 0:
+			incorrect_data = True
+
+		return incorrect_data
+
+
 	def get_plot(self, file, x_axis, y_axis, xlabel, ylabel,
 				 plot_title):
 
-		# Check if filename exists
-		if os.isfile(file):
+		# Check data
+		incorrect_data = self.verify_textinput_data(file, x_axis, y_axis)
 
-			# Get filename and extension
-			filename, extension = os.splitext(file)
+		try:
+			if incorrect_data == False:
+				# Check if filename exists
+				if os.isfile(file):
 
-			# Check if the file is a .csv file
-			if extension == '.csv':
-				# Set seaborn theme
-				sns.set_theme(style="darkgrid")
+					# Get filename and extension
+					filename, extension = os.splitext(file)
 
-				# Read file and transform it to a dataframe object
-				csv_file = pd.read_csv(file)
+					# Check if the file is a .csv file
+					if extension == '.csv':
+						# Set seaborn theme
+						sns.set_theme(style="darkgrid")
 
-				# Class attributes
-				self.plot_title = plot_title
-				self.x_axis = x_axis
-				self.y_axis = y_axis
-				self.xlabel = xlabel
-				self.ylabel = ylabel
+						# Read file and transform it to a dataframe object
+						csv_file = pd.read_csv(file)
 
-				# Plot dataframe
-				#lp = sns.lineplot(data=csv_file, x="month", y="cases_number", sort=False)
-				lp = sns.lineplot(data=csv_file, x=self.x_axis, y=self.y_axis, sort=False)
+						# Class attributes
+						self.plot_title = plot_title
+						self.x_axis = x_axis
+						self.y_axis = y_axis
+						self.xlabel = xlabel
+						self.ylabel = ylabel
 
-				lp.set(title = self.plot_title, xlabel=self.xlabel, ylabel=self.ylabel)
+						# Plot dataframe
+						#lp = sns.lineplot(data=csv_file, x="month", y="cases_number", sort=False)
+						lp = sns.lineplot(data=csv_file, x=self.x_axis, y=self.y_axis, sort=False)
 
-				# Show plot
-				plt.show()
-			else: 
-				self.dialog.open(txt.DIALOG_FILE_NOT_VALID) 
+						lp.set(title = self.plot_title, xlabel=self.xlabel, ylabel=self.ylabel)
 
-		else:
-			self.dialog.open(txt.DIALOG_FILE_NOT_FOUND)
+						# Show plot
+						plt.show()
+					else: 
+						self.dialog.open(txt.DIALOG_FILE_NOT_VALID) 
+
+				else:
+					self.dialog.open(txt.DIALOG_FILE_NOT_FOUND)
+			else:
+				#print("Data incorrecta")
+				self.dialog.open(txt.DIALOG_INCORRECT_DATA_LINEPLOT)
+		except ValueError as e:
+			self.dialog.open(txt.DIALOG_KEY_ERROR_LINEPLOT)
 
 
 class HomeScreen(Screen):
