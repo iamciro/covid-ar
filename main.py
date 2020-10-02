@@ -6,12 +6,6 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from kivymd.app import MDApp
 from kivymd.uix.label import MDLabel
 
-# Modules
-import os.path as os
-import matplotlib.pyplot as plt
-import pandas as pd
-import seaborn as sns
-
 # ASSETS
 from assets import texts as txt
 from assets.helpers import Dialog
@@ -49,6 +43,13 @@ class DisplotScreen(Screen):
 
 		try:
 			if incorrect_data == False:
+
+				# Import modules
+				import os.path as os
+				import matplotlib.pyplot as plt
+				import pandas as pd
+				import seaborn as sns
+
 				# Check if filename exists
 				if os.isfile(file):
 
@@ -132,6 +133,13 @@ class LineplotScreen(Screen):
 
 		try:
 			if incorrect_data == False:
+
+				# Import modules
+				import os.path as os
+				import matplotlib.pyplot as plt
+				import pandas as pd
+				import seaborn as sns
+
 				# Check if filename exists
 				if os.isfile(file):
 
