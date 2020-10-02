@@ -15,7 +15,6 @@ Although the intention behind this project was originally to make visualizations
 * Kivy >= 1.10.1
 * KivyMD >= 0.104.1
 * Seaborn >= 0.11.0 (other versions not checked)
-* Matplotlib >= 3.3.1 (other versions not checked)
 
 ### How to install
 
