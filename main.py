@@ -5,8 +5,6 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 #KIVYMD
 from kivymd.app import MDApp
 from kivymd.uix.label import MDLabel
-from kivymd.uix.dialog import MDDialog
-from kivymd.uix.button import MDFlatButton
 
 # Modules
 import os.path as os
@@ -16,33 +14,10 @@ import seaborn as sns
 
 # ASSETS
 from assets import texts as txt
-
-class Dialog:
-
-	dialog = None
-
-	# Open dialog
-	def open(self, message=''):
-		self.dialog = MDDialog(
-			text=message,
-			buttons=[
-				MDFlatButton(
-						text=txt.DIALOG_BUTTON_TEXT,
-						on_press=self.close
-				)
-			],
-		)
-		self.dialog.open()
-
-	# Close dialog
-	def close(self, *args):
-		self.dialog.dismiss(force=True)
+from assets.helpers import Dialog
 
 
 class DisplotScreen(Screen):
-
-	title = txt.APP_TITLE
-	subtitle = txt.APP_SUBTITLE
 
 	# Plot info
 	plot_title = ''
@@ -121,11 +96,7 @@ class DisplotScreen(Screen):
 			self.dialog.open(txt.DIALOG_KEY_ERROR)
 
 
-
 class LineplotScreen(Screen):
-
-	title = txt.APP_TITLE
-	subtitle = txt.APP_SUBTITLE
 
 	# Plot info
 	plot_title = ''
@@ -203,8 +174,7 @@ class LineplotScreen(Screen):
 
 
 class HomeScreen(Screen):
-	title = txt.APP_TITLE
-	subtitle = txt.APP_SUBTITLE
+	pass
 
 class MainApp(MDApp):
 	def build(self):
