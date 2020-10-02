@@ -5,6 +5,7 @@ from kivymd.uix.button import MDFlatButton
 # ASSETS
 from assets import texts as txt
 
+# Class to open and close dialog
 class Dialog:
 
 	dialog = None

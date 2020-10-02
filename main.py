@@ -180,6 +180,6 @@ class MainApp(MDApp):
 	def build(self):
 		self.title = txt.APP_NAME
 
-		return Builder.load_file("kv/test.kv")
+		return Builder.load_file("kv/app.kv")
 
 MainApp().run()
