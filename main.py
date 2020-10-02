@@ -43,7 +43,7 @@ class DisplotScreen(Screen):
 
 		try:
 			if incorrect_data == False:
-
+				
 				# Import modules
 				import os.path as os
 				import matplotlib.pyplot as plt
@@ -88,6 +88,8 @@ class DisplotScreen(Screen):
 				else:
 					#print("Archivo no encontrado")
 					self.dialog.open(txt.DIALOG_FILE_NOT_FOUND)
+				
+			
 			else:
 				#print("Data incorrecta")
 				self.dialog.open(txt.DIALOG_INCORRECT_DATA)
