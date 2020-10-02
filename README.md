@@ -12,7 +12,15 @@ Although the intention behind this project was originally to make visualizations
 ### Dependencies 
 
 * Python 3.6+ (Python 2 not supported)
-* Kivy >= 1.10.1 (Installation)
+* Kivy >= 1.10.1
 * KivyMD >= 0.104.1
-* Seaborn >= 0.11.0 (not checked in other versions)
-* Matplotlib >) 3.3.1 (not checked in other versions)
+* Seaborn >= 0.11.0 (other versions not checked)
+* Matplotlib >= 3.3.1 (other versions not checked)
+
+### How to install
+
+Basically, you have to download the project via Git and run it with: 
+
+```
+python3 main.py
+```
