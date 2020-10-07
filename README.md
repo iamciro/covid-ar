@@ -7,6 +7,14 @@ COVID-AR is an application built with Kivy and KivyMD frameworks in Python. The 
 
 Although the intention behind this project was originally to make visualizations of COVID-19 cases, it can be used for anything related to bar and line plots.
 
+### Images
+#### Home Screen
+![Image of Yaktocat](https://github.com/iamciro/covid-ar/blob/master/imgs/1.png)
+#### Lineplot Screen
+![Image of Yaktocat](https://github.com/iamciro/covid-ar/blob/master/imgs/2.png)
+#### Generated Lineplot
+![Image of Yaktocat](https://github.com/iamciro/covid-ar/blob/master/imgs/2.png)
+
 ## Installation 
 
 ### Dependencies 
