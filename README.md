@@ -13,7 +13,7 @@ Although the intention behind this project was originally to make visualizations
 #### Lineplot Screen
 ![Image of Yaktocat](https://github.com/iamciro/covid-ar/blob/master/imgs/2.png)
 #### Generated Lineplot
-![Image of Yaktocat](https://github.com/iamciro/covid-ar/blob/master/imgs/2.png)
+![Image of Yaktocat](https://github.com/iamciro/covid-ar/blob/master/imgs/3.png)
 
 ## Installation 
 
